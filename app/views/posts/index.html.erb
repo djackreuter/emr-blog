@@ -10,6 +10,7 @@
       <div class="card">
         <a href="/posts/<%= post.id %>"><%= post.title %></a>
         <%= post.created_at.strftime('%b %e %Y') %>
+        <span>Author: <%= post.user.name %></span>
       </div>
     <% end %>
   </div>
