@@ -1,6 +1,7 @@
 <div class="row">
   <h1><%= @post.title %></h1>
 </div>
+<hr>
 <div class="row">
   <div class="col-lg-8">
     <%= @post.body %>
@@ -19,8 +20,12 @@
     <h2>Leave a comment</h2>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-lg-10">
     <%= render 'comments/form' %>
   </div>
+</div>
+<div class="row">
+  <%= render @post.comments %>
 </div>
