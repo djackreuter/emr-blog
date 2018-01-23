@@ -1,7 +1,7 @@
 # controller for posts
 class PostsController < ApplicationController
   # define before actions to run before any other methods
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy, :update]
 
   def index
     @posts = Post.all.order('created_at DESC')
