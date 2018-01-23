@@ -2,7 +2,15 @@
   <h1><%= @post.title %></h1>
 </div>
 <div class="row">
-  <div class="col">
+  <div class="col-lg-8">
     <%= @post.body %>
+  </div>
+  <div class="col-lg-4">
+    <% if user_signed_in? %>
+      <% if current_user.id == @post.user_id %>
+        <%= link_to "Edit", edit_post_path(@post), class: "btn btn-warning" %>
+        <%= link_to "Delete", root_path, method: :delete, data: { confirm: "Are you sure???" } , class: "btn btn-danger" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
