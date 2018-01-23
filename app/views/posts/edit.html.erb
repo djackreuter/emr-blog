@@ -1,25 +1,6 @@
 <div class="row">
   <div class="col-lg-8">
-    <%= form_for @post do |f| %>
-      <div class="form-group">
-        <%= f.label :title %>
-        <br>
-        <%= f.text_field(:title, {:class => "form-control"}) %>
-      </div>
-      <div class="form-group">
-        <%= f.label :body %>
-        <br>
-        <%= f.text_area(:body, {:class => "form-control"}) %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Update", ({:class => "btn btn-success"})%>
-      </div>
-      <% if @post.errors.any? %>
-        <% @post.errors.full_messages.each do |msg| %>
-          <div class="alert alert-danger"><%= msg %></div>
-        <% end %>
-      <% end %>
-    <% end %>
+    <%= render 'form' %>
     <%= link_to 'Back', post_path %>
   </div>
 </div>
