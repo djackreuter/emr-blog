@@ -14,4 +14,14 @@
       </div>
     <% end %>
   </div>
+  <div class="col-lg-4">
+    <div class="comment-card">
+    <h4>View posts by author</h4>
+      <% @users.each do |user| %>
+        <div>
+          <%= link_to user.name, posts_url(user_id: user.id) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
