@@ -1,18 +1,12 @@
-  <p><%# comment.created_at.strftime('%b %e %j %1 %M %P') %></p>
-    <div class="col-lg-4">
-      <p><%= comment.commenter %></p>
-    </div>
-  </div> <%# row from view%>
-  <div class="row">
-    <div class="col-lg-10">
-      <p><%= comment.body %></p>
-    </div>
-  <div class="col-lg-2">
+<div class="col-lg-10">
+  <div class="card comment-card">
+    <p><%= comment.body %></p>
+    <p><span> - </span><%= comment.commenter %></p>
+    <p><%= comment.created_at.in_time_zone('America/Denver').strftime('%b %e %Y, %l:%m %p') %></p>
     <% if user_signed_in? %>
-      <% if current_user.id == @post.user_id %>
-        <% if @post.comments.count > 0 %>
-          <%= link_to 'X', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure???', class: "btn btn-danger" } %>
-        <% end %>
-      <% end %>
+    <% if current_user.id == @post.user_id %>
+        <%= link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure???'}, class: "btn btn-danger" %>
     <% end %>
+  <% end %>
   </div>
+</div>
