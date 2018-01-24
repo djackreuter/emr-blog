@@ -7,16 +7,14 @@
   .col-lg-8
     - @posts.each do |post|
       .card.main-card
-        %a 
-          {href: "/posts/<%= post.id"}
-          = post.title
+        = link_to post.title, post_url(post)
         = post.created_at.strftime('%b %e %Y')
         %span 
           Author: 
-        = post.user.name
+          = post.user.name
   .col-lg-4
     .comment-card
-    %h4 View posts by author
+      %h4 View posts by author
       - @users.each do |user|
         %div
           = link_to user.name, posts_url(user_id: user.id)
