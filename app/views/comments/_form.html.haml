@@ -1,0 +1,15 @@
+= form_for([@post, Comment.new]) do |f|
+  %div.form-group
+    = f.label :commenter, "Name"
+    %br
+    = f.text_field(:commenter, {:class => "form-control"})
+  %div.form-group
+    = f.label :body
+    %br
+    = f.text_area(:body, {:class => "form-control"})
+    %div.form-group
+      = f.submit "Post", ({:class => "btn btn-primary"})
+    - if @post.errors.any?
+      - @post.errors.full_messages.each do |msg|
+        %div.alert.alert-danger
+          = msg
