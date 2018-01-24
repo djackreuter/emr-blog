@@ -1,0 +1,23 @@
+.row
+  %h1 
+    = @post.title
+%hr
+.row
+  .col-lg-8
+    = @post.body
+  .col-lg-4
+    - if user_signed_in?
+      - if current_user.id == @post.user_id
+        = link_to "Edit", edit_post_path(@post), class: "btn btn-warning"
+        = link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure???" } , class: "btn btn-danger"
+
+.row
+  .col-lg-10
+    %h2.comment-heading
+      Leave a comment
+%hr
+.row
+  .col-lg-10
+    = render "comments/form"
+.row
+  = render partial: 'comments/comment', collection: @post.comments
