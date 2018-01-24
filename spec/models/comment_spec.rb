@@ -13,7 +13,7 @@ RSpec.describe Comment, type: :model do
     end
 
     it 'should save successfully' do
-      post = Post.new()
+      post = Post.new
       post.save(validate: false)
       comment = Comment.new(commenter: 'Jimmy Hopkins', body: 'This is a test comment', post: post).save
       expect(comment).to eq(true)
