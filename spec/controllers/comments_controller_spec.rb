@@ -13,4 +13,35 @@ RSpec.describe CommentsController, type: :controller do
     post.save(validate: false)
     post
   end
+
+  let(:comment) do
+    comment = Comment.new(commenter: 'Ted Thompson', body: 'test comment')
+    comment.save(validate: false)
+    comment
+  end
+
+  let(:comment_with_post) do
+    new_post
+    comment_with_post = Comment.new(commenter: 'Ted Thompson', body: 'test comment', post: new_post)
+    comment_with_post.save(validate: false)
+    comment_with_post
+  end
+
+  context 'POST #create' do
+    it 'returns redirects to post path' do
+      new_post
+      comment
+      post :create, params: { post_id: new_post.id, comment: { commenter: comment.commenter, body: comment.body } }
+      expect(response).to redirect_to post_path(id: new_post.id)
+    end
+  end
+
+  context 'DELETE #destroy' do
+    it 'redirects to post path' do
+      user
+      comment_with_post
+      delete :destroy, params: { post_id: comment_with_post.post.id, id: comment_with_post.id }
+      expect(response).to redirect_to post_path(id: new_post.id)
+    end
+  end
 end
