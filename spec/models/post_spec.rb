@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'faker'
 
 RSpec.describe Post, type: :model do
   context 'validation tests' do
@@ -23,7 +24,7 @@ RSpec.describe Post, type: :model do
     end
 
     it 'should save successfully' do
-      user = User.new
+      user = User.new(name: 'Bif Taylor', email: Faker::Internet.email, password: 'password', password_confirmation: 'password')
       user.save(validate: false)
       post = Post.new(title: 'this is a test title', body: 'this is a test body', user: user).save
       expect(post).to eq(true)
