@@ -56,7 +56,19 @@ RSpec.describe PostsController, type: :controller do
 
   context 'PATCH #update' do
     it 'redirects to post_path' do
+      user
+      new_post
+      patch :update, params: { id: new_post.id, post: { title: 'updated post title', body: 'updated post body' } }
+      expect(response).to redirect_to("/posts/#{new_post.id}")
+    end
+  end
 
+  context 'DELETE #destroy' do
+    it 'redirects to root_path' do
+      user
+      new_post
+      delete :destroy, params: { id: new_post.id }
+      expect(response).to redirect_to(root_path)
     end
   end
 end
