@@ -23,6 +23,7 @@ gem 'pg', '~> 0.21.0'
 gem 'puma', '~> 3.7'
 # mail for mailgun
 gem 'mail', '~> 2.7'
+gem 'mailgun-ruby', '~>1.1.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
