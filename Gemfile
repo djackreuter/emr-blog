@@ -21,6 +21,8 @@ gem 'delayed_job_active_record'
 gem 'pg', '~> 0.21.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+# mail for mailgun
+gem 'mail', '~> 2.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
