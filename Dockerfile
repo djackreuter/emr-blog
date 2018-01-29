@@ -1,6 +1,5 @@
 FROM ruby:2.4
 
-
 # Install apt based dependencies required to run Rails as 
 # well as RubyGems. As the Ruby image itself is based on a 
 # Debian image, use apt-get to install those.
@@ -16,12 +15,13 @@ WORKDIR /emr-blog
 # the RubyGems. This is a separate step so the dependencies 
 # will be cached unless changes to one of those two files 
 # are made.
-COPY Gemfile Gemfile.lock ./ 
-RUN gem install bundler && bundle install --jobs 20 --retry 5
-
+COPY Gemfile /emr-blog/Gemfile 
+COPY Gemfile.lock /emr-blog/Gemfile.lock
+# RUN gem install bundler && bundle install --jobs 20 --retry 5
+RUN bundle install
 
 # Copy the main application.
-COPY . ./
+COPY . /emr-blog
 
 # Expose port 3000 to the Docker host, so it can be accessed 
 # from the outside.
