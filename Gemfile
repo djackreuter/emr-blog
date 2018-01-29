@@ -15,6 +15,8 @@ gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+# delayed job
+gem 'delayed_job_active_record'
 # Use postgreSQL as the database for Active Record
 gem 'pg', '~> 0.21.0'
 # Use Puma as the app server
