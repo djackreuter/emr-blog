@@ -27,7 +27,11 @@ COPY . ./
 # from the outside.
 EXPOSE 3000
 
+# Configure an entry point, so "bundle exec" doesnt
+# need to be specified for each command.
+ENTRYPOINT ["bundle", "exec"]
+
 # The main command to run when the container starts. Also 
 # tell the Rails dev server to bind to all interfaces by 
 # default.
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["rails", "server", "-b", "0.0.0.0"]
