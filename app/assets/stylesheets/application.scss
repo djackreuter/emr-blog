@@ -23,15 +23,15 @@ body {
 .main-card {
   padding: 1rem;
   background: skyblue;
-  margin-bottom: 1rem;
-  box-shadow: -0.2rem 0 2rem #333
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 1rem #333
 }
 
 .comment-card {
   padding: 1rem;
   background-color: lightgray;
   margin-bottom: 1rem;
-  box-shadow: 0.2rem 0 2rem #333
+  box-shadow: 0 0 1rem #333
 }
 
 .comment-heading {
@@ -40,6 +40,12 @@ body {
 
 .post-body {
   height: 12rem;
+}
+
+.post-card {
+  padding: 1rem;
+  background: #F8F9FA;
+  text-align: justify;
 }
 
 .comment-button {

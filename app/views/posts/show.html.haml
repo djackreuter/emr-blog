@@ -4,7 +4,8 @@
 %hr
 .row
   .col-lg-8
-    = @post.body
+    .card.post-card
+      = @post.body
   .col-lg-4
     - if user_signed_in?
       - if current_user.id == @post.user_id
