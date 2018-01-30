@@ -27,7 +27,13 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
 
+    @user = current_user
+
     if @post.save
+      if @user.posts.count <= 1
+        # ApplicationMailer.first_post_notification(@user).deliver_now
+        FirstPostMailerJob.perform_later(@user)
+      end
       redirect_to root_path
     else
       render 'new'
