@@ -15,16 +15,23 @@
  */
 @import "bootstrap";
 
+body {
+  min-height: 100vh;
+  background: linear-gradient(blue, lightskyblue);
+}
+
 .main-card {
   padding: 1rem;
-  background: lightcyan;
+  background: skyblue;
   margin-bottom: 1rem;
+  box-shadow: -0.2rem 0 2rem #333
 }
 
 .comment-card {
   padding: 1rem;
   background-color: lightgray;
   margin-bottom: 1rem;
+  box-shadow: 0.2rem 0 2rem #333
 }
 
 .comment-heading {
