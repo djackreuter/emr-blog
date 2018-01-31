@@ -20,6 +20,9 @@
           - if user_signed_in?
             %li.nav-item
               = link_to "New Post", new_post_path, class: "nav-link"
+            - if current_user.admin?
+              %li.nav-item
+                = link_to "Admin Pannel", admin_index_path, class: "nav-link"
         %ul.navbar-nav.ml-auto
           - if user_signed_in?
             %li.nav-item
