@@ -32,7 +32,8 @@ class PostsController < ApplicationController
     if @post.save
       if @user.posts.count <= 1
         # ApplicationMailer.first_post_notification(@user).deliver_later
-        FirstPostMailerJob.perform_later(@user)
+        # FirstPostMailerJob.perform_later(@user)
+        FirstPostMailerJob.delay(@user.id).perform
       end
       redirect_to root_path
     else
