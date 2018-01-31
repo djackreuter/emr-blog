@@ -1,0 +1,13 @@
+.row
+  .col
+    %h1 
+      All users
+    %hr
+- @users.each do |user|
+  .card.main-card
+    .row
+      .col-lg-9
+        = "Name: #{user.name}"
+        = "Posts: #{user.posts.count}"
+      .col.lg-3
+        = link_to "Delete", admin_path(user.id), method: :delete, data: { confirm: "Are you sure???" } , class: "btn btn-danger user-delete-button float-right"
