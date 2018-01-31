@@ -36,9 +36,11 @@
   .container
     .row
       .col-lg-4
-        %p.notice
-          = notice
-        %p.alert
-          = alert
+        - if notice.present?
+          %p.notice.alert.alert-primary
+            = notice
+        - if alert.present?
+          %p.alert.alert-danger
+            = alert
   .container
     = yield
