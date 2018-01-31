@@ -2,7 +2,7 @@ class FirstPostMailerJob < ActiveJob::Base
   queue_as :default
 
   def perform(user)
-    ApplicationMailer.first_post_notification(user)
+    ApplicationMailer.first_post_notification(user).deliver
   end
 end
 
