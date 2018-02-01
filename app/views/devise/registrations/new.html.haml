@@ -33,6 +33,16 @@
           %br
           = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
 
+        .form-group
+          %p
+            Write your first post!
+            %em
+              Optional
+        
+        .form-group.fields
+          = f.fields_for :posts, Post.new do |builder|
+            = render 'posts/form', f: builder
+
         .actions
           = f.submit "Sign up", class: "btn btn-success"
 
