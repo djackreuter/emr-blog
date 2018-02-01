@@ -2,6 +2,8 @@
 class PostsController < ApplicationController
   # define before actions to run before any other methods
   before_action :authenticate_user!, only: [:new, :edit, :destroy, :update]
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_auth, only: [:edit, :destroy, :update]
 
   def index
     if params[:user_id].present?
@@ -13,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post
   end
 
   def new
@@ -21,7 +23,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post
   end
 
   def create
@@ -42,7 +44,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to @post
     else
@@ -51,7 +52,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_path
   end
@@ -60,5 +60,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
+  end
+
+  def check_auth
+    redirect_to root_path unless current_user.id == @post.user_id
   end
 end
