@@ -40,8 +40,8 @@
               Optional
         
         .form-group.fields
-          = f.fields_for :posts, Post.new do |builder|
-            = render 'posts/form', f: builder
+          = f.fields_for :posts, Post.new do |ff|
+            = render 'posts/form', f: ff
 
         .actions
           = f.submit "Sign up", class: "btn btn-success"
