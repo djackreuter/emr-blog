@@ -5,4 +5,5 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  accepts_nested_attributes_for :posts, allow_destroy: true, reject_if: proc { |attr| attr['title'].blank? || attr['body'].blank? }
 end
