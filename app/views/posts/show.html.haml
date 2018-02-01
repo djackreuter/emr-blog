@@ -11,7 +11,7 @@
       - if current_user.id == @post.user_id
         = link_to "Edit", edit_post_path(@post), class: "btn btn-warning"
         = link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure???" } , class: "btn btn-danger"
-      - if current_user.admin?
+      - if current_user.admin? && current_user.id != @post.user_id
         = link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure???" } , class: "btn btn-danger"
 
 .row
