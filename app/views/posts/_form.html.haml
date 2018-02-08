@@ -1,4 +1,4 @@
-.col-lg-8
+= form_for @post do |f|
   .form-group
     = f.label :title
     %br
@@ -7,4 +7,10 @@
     = f.label :body
     %br
     = f.text_area(:body, {:class => "form-control post-body"})
+  .form-group
+    = f.submit "Publish", ({:class => "btn btn-success"})
+  - if @post.errors.any?
+    - @post.errors.full_messages.each do |msg|
+      .alert.alert-danger
+        = msg
   
