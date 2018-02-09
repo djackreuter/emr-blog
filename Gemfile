@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Active Model Serializers
+gem 'active_model_serializers', '~> 0.10.0'
 # haml
 gem "haml-rails", "~> 1.0"
 # Devise
