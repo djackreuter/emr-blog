@@ -6,6 +6,8 @@
   .col-lg-8
     .card.post-card
       = @post.body
+      - if @post.post_image.present?
+        = image_tag @post.post_image.url(:post_show)
   .col-lg-4
     - if user_signed_in?
       - if current_user.id == @post.user_id

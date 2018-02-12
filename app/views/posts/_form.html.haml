@@ -8,6 +8,8 @@
     %br
     = f.text_area(:body, {:class => "form-control post-body"})
   .form-group
+    = f.file_field(:post_image)
+  .form-group
     = f.submit "Publish", ({:class => "btn btn-success"})
   - if @post.errors.any?
     - @post.errors.full_messages.each do |msg|
