@@ -5,15 +5,17 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Paperclip
+gem 'paperclip', '~> 5.2', '>= 5.2.1'
 # Active Model Serializers
 gem 'active_model_serializers', '~> 0.10.0'
 # haml
 gem "haml-rails", "~> 1.0"
 # Devise
-gem 'devise' 
+gem 'devise'
 # Bootstrap 4
 gem 'bootstrap', '~> 4.0'
-# jQuery 
+# jQuery
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
