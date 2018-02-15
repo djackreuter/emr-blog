@@ -10,10 +10,10 @@
         = image_tag @post.post_image.url(:post_show), class: "post-image"
   .col-lg-4
     - if user_signed_in?
-      - if current_user.id == @post.user_id
+      - if belongs_to_user?(@post)
         = link_to "Edit", edit_post_path(@post), class: "btn btn-warning"
         = link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure???" } , class: "btn btn-danger"
-      - if current_user.admin? && current_user.id != @post.user_id
+      - if admin?(@post)
         = link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure???" } , class: "btn btn-danger"
 
 .row
