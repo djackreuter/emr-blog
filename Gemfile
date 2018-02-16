@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Devise Authy
-gem 'devise-authy'
+# gem 'devise-authy'
 # Paperclip
 gem 'paperclip', '~> 5.2', '>= 5.2.1'
 # Active Model Serializers
