@@ -8,31 +8,34 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  %body
-    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      = link_to "EMR Blog", root_path, class: "navbar-brand"
-      %button.navbar-toggler{type: "button", 'data-toggle': "collapse", 'data-target': "#navbarNav", 'aria-controls': "navbarNav", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
-        %span.navbar-toggler-icon
-      #navbarNav.collapse.navbar-collapse 
-        %ul.navbar-nav
-          %li.nav-item.active
-            = link_to "Home", root_path, class: "nav-link"
-          - if user_signed_in?
+  
+    =javascript_include_tag "https://www.authy.com/form.authy.min.js"
+    =stylesheet_link_tag "https://www.authy.com/form.authy.min.css"
+%body
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    = link_to "EMR Blog", root_path, class: "navbar-brand"
+    %button.navbar-toggler{type: "button", 'data-toggle': "collapse", 'data-target': "#navbarNav", 'aria-controls': "navbarNav", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
+      %span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse 
+      %ul.navbar-nav
+        %li.nav-item.active
+          = link_to "Home", root_path, class: "nav-link"
+        - if user_signed_in?
+          %li.nav-item
+            = link_to "New Post", new_post_path, class: "nav-link"
+          - if current_user.admin?
             %li.nav-item
-              = link_to "New Post", new_post_path, class: "nav-link"
-            - if current_user.admin?
-              %li.nav-item
-                = link_to "Admin Pannel", admin_index_path, class: "nav-link"
-        %ul.navbar-nav.ml-auto
-          - if user_signed_in?
-            %li.nav-item
-              %a.nav-link.disabled
-                = "Welcome, #{current_user.name}"
-            %li.nav-item
-              = link_to "Logout", destroy_user_session_path, class: "nav-link", method: :delete
-          - else
-            = link_to "Login", new_user_session_path, class: "nav-link"
-            = link_to "Sign Up", new_user_registration_path, class: "nav-link"
+              = link_to "Admin Pannel", admin_index_path, class: "nav-link"
+      %ul.navbar-nav.ml-auto
+        - if user_signed_in?
+          %li.nav-item
+            %a.nav-link.disabled
+              = "Welcome, #{current_user.name}"
+          %li.nav-item
+            = link_to "Logout", destroy_user_session_path, class: "nav-link", method: :delete
+        - else
+          = link_to "Login", new_user_session_path, class: "nav-link"
+          = link_to "Sign Up", new_user_registration_path, class: "nav-link"
   .container
     .row
       .col-lg-4
