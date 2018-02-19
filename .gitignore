@@ -23,6 +23,7 @@
 .byebug_history
 coverage
 .DS_Store
+._.DS_Store
 /.idea
 .env
 public/
