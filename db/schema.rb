@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180219205328) do
     t.boolean "admin", default: false
     t.string "phone_number"
     t.string "authy_id"
-    t.string "country_code"
+    t.string "country_code", default: "1"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
