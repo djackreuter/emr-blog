@@ -6,23 +6,12 @@
 .row
   .col-lg-4
     .card.main-card
-      -# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      -#   .field
-      -#     = f.label :email
-      -#     %br
-      -#     = f.email_field :email, autofocus: true
-
-      -#   .field
-      -#     = f.label :password
-      -#     %br
-      -#     = f.password_field :password, autocomplete: "off"
-
-      -#   - if devise_mapping.rememberable?
-      -#     .field
-      -#       = f.check_box :remember_me
-      -#       = f.label :remember_me
+      = form_for users_check_2fa_path do |f|
+        .field.form-group
+          = f.label :code, "Verification Code"
+          %br
+          = f.text_field :token, autofocus: true, class: "form-control"
   
-      -#   .actions
-      -#     = f.submit "Log in", class: "btn btn-success"
-
-      -# = render "devise/shared/links"
+        .actions
+          = f.submit "Log in", class: "btn btn-success"
+          
