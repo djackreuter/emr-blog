@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   devise_scope :user do
     get '/users/verify', to: 'users/sessions#verify'
-    post '/users/check_2fa', to: 'users/sessions#check_2fa'
+    post '/users/verify', to: 'users/sessions#check_2fa'
   end
   resources :posts do
     resources :comments
