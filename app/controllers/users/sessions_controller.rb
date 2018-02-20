@@ -7,10 +7,21 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def verify
+    @user = User.find_by(id: session[:pre_2fa_id])
   end
 
   def check_2fa
-    user = User.find_by(session[:pre_2fa_id])
+    user = User.find(session[:pre_2fa_id])
+    token = Authy::API.verify(id: user.authy_id, token: params[:token])
+    if token.ok?
+      sign_in(user, scope: :user)
+      flash[:notice] = 'Signed in!!'
+      session[:pre_2fa_id] = nil
+      redirect_to root_path
+    else
+      flash[:alert] = 'Sorry, code was incorrect'
+      redirect_to new_user_session_path
+    end
   end
 
   # POST /resource/sign_in
@@ -39,4 +50,4 @@ class Users::SessionsController < Devise::SessionsController
 end
 # self.resource = warden.authenticate!(auth_options)
 # set_flash_message!(:notice, :signed_in)
-#     sign_in(resource_name, resource)
+# sign_in(resource_name, resource)
