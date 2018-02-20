@@ -6,12 +6,12 @@
 .row
   .col-lg-4
     .card.main-card
-      = form_for users_check_2fa_path do |f|
+      = form_tag users_verify_path do 
         .field.form-group
-          = f.label :code, "Verification Code"
+          = label_tag :code, "Verification Code"
           %br
-          = f.text_field :token, autofocus: true, class: "form-control"
+          = text_field_tag :token, '', class: "form-control"
   
         .actions
-          = f.submit "Log in", class: "btn btn-success"
+          %button{type: :submit, class: "btn btn-success" } Login
           
