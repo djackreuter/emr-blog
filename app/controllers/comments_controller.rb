@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
+    user = @post.user
     @comment = @post.comments.create(comment_params)
     redirect_to post_path(@post)
+    ::SendSMS.send_text(user)
   end
 
   def destroy
