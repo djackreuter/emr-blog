@@ -5,9 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Twilio for SMS
+gem 'twilio-ruby', '~> 5.6', '>= 5.6.3'
+# Authy for 2fa
 gem 'authy', '~> 2.7', '>= 2.7.2'
-# Devise Authy
-# gem 'devise-authy'
 # Paperclip
 gem 'paperclip', '~> 5.2', '>= 5.2.1'
 # Active Model Serializers
