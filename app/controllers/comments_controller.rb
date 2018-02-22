@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     user = @post.user
     @comment = @post.comments.create(comment_params)
     redirect_to post_path(@post)
-    ::SendSMS.send_text(user)
+    ::SendSMS.delay.send_text(user)
   end
 
   def destroy
